@@ -1,0 +1,1733 @@
+/* AdminDashboard.css - Complete Enhanced Styles with New Features */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&display=swap');
+
+/* Base Container */
+.admindashboard-container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Enhanced Header Section */
+.admindashboard-header {
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.admindashboard-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: headerShine 4s ease-in-out infinite;
+}
+
+@keyframes headerShine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+.admindashboard-header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.admindashboard-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.temple-icon {
+  font-size: 2.5rem;
+  color: #FFD700;
+  animation: pulse 2s infinite;
+}
+
+.admindashboard-title h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.admindashboard-temple-name {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-left: 0;
+  display: block;
+  margin-top: 5px;
+}
+
+.admindashboard-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.admindashboard-refresh-btn,
+.admindashboard-view-site-btn, 
+.admindashboard-logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.admindashboard-refresh-btn:hover,
+.admindashboard-view-site-btn:hover, 
+.admindashboard-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.admindashboard-refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Main Content */
+.admindashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* Enhanced Summary Statistics */
+.admindashboard-summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.admindashboard-summary-item {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.admindashboard-summary-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8B0000, #FFD700, #8B0000);
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.admindashboard-summary-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.summary-icon {
+  font-size: 2.2rem;
+  color: #8B0000;
+  background: rgba(139, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admindashboard-summary-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  display: block;
+  line-height: 1.1;
+}
+
+.admindashboard-summary-label {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.summary-subtitle {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Enhanced Recent Bookings Section */
+.admindashboard-recent-bookings-section {
+  margin-bottom: 35px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-header i {
+  color: #8B0000;
+}
+
+.section-badge {
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(139, 0, 0, 0.2));
+  color: #8B0000;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(139, 0, 0, 0.2);
+}
+
+.recent-bookings-container {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.bookings-table-wrapper {
+  overflow-x: auto;
+}
+
+.admindashboard-recent-bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admindashboard-recent-bookings-table th {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.admindashboard-recent-bookings-table td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.booking-row {
+  transition: all 0.2s ease;
+}
+
+.booking-row:hover {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  transform: scale(1.001);
+}
+
+.receipt-number {
+  font-family: 'Courier New', monospace;
+  background: #e9ecef;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.devotee-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.pooja-name {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.star-badge {
+  background: linear-gradient(135deg, #e7f3ff, #cce7ff);
+  color: #0066cc;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+.amount {
+  font-weight: 700;
+  color: #28a745;
+  font-family: 'Courier New', monospace;
+}
+
+.booking-date {
+  font-size: 0.8rem;
+  color: #666;
+  font-family: 'Courier New', monospace;
+}
+
+.participant-number {
+  font-weight: 600;
+  color: #8B0000;
+  background: rgba(139, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+/* Enhanced Pooja Filter Section */
+.admindashboard-pooja-filter {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  margin-bottom: 35px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  position: relative;
+  overflow: hidden;
+}
+
+.admindashboard-pooja-filter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8B0000, #FFD700, #A52A2A);
+  animation: filterShine 4s ease-in-out infinite;
+}
+
+@keyframes filterShine {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-header h3 {
+  margin: 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.filter-header i {
+  color: #FFD700;
+  font-size: 1.4rem;
+}
+
+.filter-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.total-poojas {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+
+.admindashboard-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.filter-select-wrapper {
+  flex: 1;
+  min-width: 300px;
+}
+
+.admindashboard-pooja-select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.admindashboard-pooja-select:focus {
+  outline: none;
+  border-color: #8B0000;
+  box-shadow: 0 0 0 4px rgba(139, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.admindashboard-pooja-select:hover {
+  border-color: #A52A2A;
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.1);
+}
+
+.filter-summary {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.filter-result {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Enhanced Poojas Section */
+.admindashboard-poojas-section {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.admindashboard-pooja-container {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.admindashboard-pooja-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Enhanced Pooja Header */
+.admindashboard-pooja-header {
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  color: white;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.admindashboard-pooja-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: poojaHeaderShine 3s ease-in-out infinite;
+}
+
+@keyframes poojaHeaderShine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+.admindashboard-pooja-header:hover {
+  background: linear-gradient(135deg, #A52A2A, #CD5C5C);
+}
+
+.admindashboard-pooja-info {
+  position: relative;
+  z-index: 1;
+}
+
+.pooja-title-section h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.pooja-title-section h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  font-family: 'Noto Sans Malayalam', sans-serif;
+}
+
+.admindashboard-pooja-meta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.pooja-date,
+.pooja-category,
+.admindashboard-pooja-amount,
+.admindashboard-pooja-revenue {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.admindashboard-pooja-revenue {
+  background: rgba(255, 215, 0, 0.2);
+  color: #FFD700;
+  font-weight: 600;
+}
+
+.admindashboard-pooja-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.admindashboard-participants-count {
+  text-align: center;
+}
+
+.admindashboard-count {
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+}
+
+.admindashboard-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.admindashboard-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.admindashboard-progress-bar {
+  width: 220px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admindashboard-progress-fill {
+  height: 100%;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 5px;
+  position: relative;
+}
+
+.admindashboard-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progressShimmer 2s infinite;
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-percentage {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.admindashboard-status {
+  text-align: center;
+}
+
+.admindashboard-full {
+  background: #dc3545;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.admindashboard-available {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.expand-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.expand-indicator i {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.admindashboard-pooja-header:hover .expand-indicator i {
+  transform: scale(1.1);
+}
+
+/* Enhanced Participants Section */
+.admindashboard-participants-section {
+  background: #f8f9fa;
+  border-top: 2px solid #dee2e6;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+}
+
+.participants-section-header {
+  padding: 25px 30px;
+  background: white;
+  border-bottom: 2px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.participants-section-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.participants-section-header i {
+  color: #8B0000;
+}
+
+.participants-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.refresh-participants-btn,
+.export-participants-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.refresh-participants-btn {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: white;
+  box-shadow: 0 3px 10px rgba(23, 162, 184, 0.3);
+}
+
+.export-participants-btn {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+
+.refresh-participants-btn:hover,
+.export-participants-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.refresh-participants-btn:disabled,
+.export-participants-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Loading and Summary States */
+.participants-loading {
+  padding: 50px;
+  text-align: center;
+  background: white;
+}
+
+.admindashboard-loading-state,
+.admindashboard-error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+.admindashboard-spinner {
+  width: 55px;
+  height: 55px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #8B0000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #dc3545;
+}
+
+.admindashboard-retry-btn {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.admindashboard-retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+}
+
+/* Enhanced Summary Statistics */
+.participants-summary {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 20px;
+  border-bottom: 2px solid #dee2e6;
+  gap: 20px;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.summary-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-stat.revenue {
+  border-color: #28a745;
+}
+
+.summary-stat.revenue .stat-number {
+  color: #28a745;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* Enhanced Participants Table */
+.participants-table-wrapper {
+  max-height: 600px;
+  overflow-y: auto;
+  background: white;
+}
+
+.admindashboard-participants-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admindashboard-participants-table th {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 18px 15px;
+  text-align: center;
+  font-weight: 700;
+  color: #333;
+  border-bottom: 3px solid #dee2e6;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.admindashboard-participants-table th:first-child {
+  border-radius: 8px 0 0 0;
+  width: 80px;
+}
+
+.admindashboard-participants-table th:nth-child(2) {
+  text-align: left;
+  min-width: 180px;
+}
+
+.admindashboard-participants-table th:nth-child(3) {
+  min-width: 140px;
+}
+
+.admindashboard-participants-table th:nth-child(4) {
+  min-width: 150px;
+}
+
+.admindashboard-participants-table th:nth-child(5) {
+  min-width: 120px;
+}
+
+.admindashboard-participants-table th:nth-child(6) {
+  min-width: 130px;
+}
+
+.admindashboard-participants-table th:nth-child(7) {
+  min-width: 100px;
+}
+
+.admindashboard-participants-table th:last-child {
+  border-radius: 0 8px 0 0;
+  min-width: 100px;
+}
+
+.admindashboard-participants-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #dee2e6;
+  color: #555;
+  vertical-align: middle;
+}
+
+.admindashboard-participant-row {
+  transition: all 0.2s ease;
+}
+
+.admindashboard-participant-row:nth-child(even) {
+  background: rgba(248, 249, 250, 0.3);
+}
+
+.admindashboard-participant-row:hover {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  transform: scale(1.001);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admindashboard-participant-number {
+  text-align: center;
+}
+
+.slot-number {
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-block;
+  min-width: 35px;
+  text-align: center;
+}
+
+.devotee-info .name {
+  font-weight: 700;
+  color: #333;
+  font-size: 1rem;
+}
+
+.available-slot {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+}
+
+.star-tag {
+  background: linear-gradient(135deg, #e7f3ff, #cce7ff);
+  color: #0066cc;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  border: 1px solid rgba(0, 102, 204, 0.2);
+  text-align: center;
+}
+
+.booking-date-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: center;
+}
+
+.booking-date-info .time {
+  font-size: 0.8rem;
+  color: #666;
+  font-family: 'Courier New', monospace;
+}
+
+.receipt-code {
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  border: 1px solid #dee2e6;
+  font-weight: 600;
+}
+
+.payment-method {
+  font-size: 0.85rem;
+  color: #666;
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.amount-paid {
+  font-weight: 700;
+  color: #28a745;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+.empty-indicator {
+  color: #ccc;
+  font-style: italic;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-booked {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-available {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-badge i {
+  font-size: 0.8rem;
+}
+
+/* Empty Slots Enhanced */
+.admindashboard-empty-slot {
+  opacity: 0.5;
+  background: linear-gradient(135deg, #fafafa, #f5f5f5);
+  transition: all 0.2s ease;
+}
+
+.admindashboard-empty-slot:hover {
+  background: linear-gradient(135deg, #f0f0f0, #e9ecef);
+  opacity: 0.7;
+}
+
+/* Enhanced Quick Stats */
+.pooja-quick-stats {
+  background: white;
+  padding: 20px 25px;
+  border-top: 2px solid #dee2e6;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.quick-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.quick-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #8B0000;
+}
+
+.quick-stat i {
+  color: #8B0000;
+  font-size: 1.1rem;
+}
+
+/* Not Loaded State */
+.participants-not-loaded {
+  background: white;
+  padding: 50px;
+  text-align: center;
+}
+
+.not-loaded-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.not-loaded-content i {
+  font-size: 3rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.not-loaded-content p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
+  max-width: 400px;
+}
+
+.load-participants-btn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.load-participants-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* No Poojas Message */
+.no-poojas-message {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.no-data-icon {
+  font-size: 4rem;
+  margin-bottom: 25px;
+  color: #ccc;
+}
+
+.no-poojas-message h3 {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+.no-poojas-message p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0 0 25px 0;
+}
+
+.show-all-btn {
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.show-all-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+}
+
+/* Enhanced Footer Info */
+.admindashboard-footer-info {
+  margin-top: 50px;
+  padding: 30px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.admindashboard-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.note-icon {
+  color: #8B0000;
+  font-size: 2rem;
+  margin-top: 5px;
+  flex-shrink: 0;
+  background: rgba(139, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-content {
+  flex: 1;
+}
+
+.note-content h4 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.note-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.note-item {
+  padding: 15px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.note-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #8B0000;
+}
+
+.note-item strong {
+  color: #8B0000;
+  font-weight: 700;
+}
+
+.dashboard-version {
+  text-align: center;
+  padding: 25px;
+  border-top: 2px solid #dee2e6;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  margin-top: 25px;
+  border-radius: 0 0 18px 18px;
+}
+
+/* Custom Scrollbar Enhanced */
+.participants-table-wrapper::-webkit-scrollbar,
+.admindashboard-participants-table::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.participants-table-wrapper::-webkit-scrollbar-track,
+.admindashboard-participants-table::-webkit-scrollbar-track {
+  background: linear-gradient(135deg, #f1f1f1, #e9ecef);
+  border-radius: 5px;
+}
+
+.participants-table-wrapper::-webkit-scrollbar-thumb,
+.admindashboard-participants-table::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ccc, #999);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.participants-table-wrapper::-webkit-scrollbar-thumb:hover,
+.admindashboard-participants-table::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #999, #666);
+}
+
+/* Focus Styles for Accessibility Enhanced */
+.admindashboard-refresh-btn:focus,
+.admindashboard-view-site-btn:focus,
+.admindashboard-logout-btn:focus,
+.admindashboard-pooja-select:focus,
+.refresh-participants-btn:focus,
+.export-participants-btn:focus {
+  outline: 3px solid #FFD700;
+  outline-offset: 3px;
+}
+
+/* Selection Styles Enhanced */
+.admindashboard-participants-table tr::selection,
+.admindashboard-participants-table td::selection {
+  background: rgba(139, 0, 0, 0.2);
+  color: #fff;
+}
+
+/* Responsive Design - Large Screens */
+@media (max-width: 1200px) {
+  .admindashboard-content {
+    max-width: 100%;
+    padding: 25px 15px;
+  }
+  
+  .admindashboard-summary-stats {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+  }
+  
+  .admindashboard-progress-bar {
+    width: 180px;
+  }
+  
+  .participants-summary {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* Responsive Design - Tablets */
+@media (max-width: 768px) {
+  .admindashboard-header-content {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+  
+  .admindashboard-title {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .admindashboard-temple-name {
+    margin-left: 0;
+  }
+  
+  .admindashboard-summary-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .admindashboard-summary-item {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .summary-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2.5rem;
+  }
+  
+  .admindashboard-summary-number {
+    font-size: 1.8rem;
+  }
+  
+  .admindashboard-pooja-header {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .admindashboard-pooja-stats {
+    align-items: center;
+  }
+  
+  .admindashboard-filter-controls {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .filter-select-wrapper {
+    min-width: 100%;
+  }
+  
+  .admindashboard-pooja-meta {
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .participants-section-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .participants-actions {
+    justify-content: center;
+  }
+  
+  .admindashboard-progress-bar {
+    width: 200px;
+  }
+  
+  .pooja-quick-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .note-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive Design - Small Tablets */
+@media (max-width: 640px) {
+  .admindashboard-title h1 {
+    font-size: 1.6rem;
+  }
+  
+  .temple-icon {
+    font-size: 2rem;
+  }
+  
+  .admindashboard-participants-table {
+    font-size: 0.8rem;
+  }
+  
+  .admindashboard-participants-table th,
+  .admindashboard-participants-table td {
+    padding: 10px 8px;
+  }
+  
+  .admindashboard-summary-item {
+    padding: 15px;
+  }
+  
+  .admindashboard-summary-number {
+    font-size: 1.5rem;
+  }
+  
+  .admindashboard-progress-bar {
+    width: 150px;
+  }
+  
+  .admindashboard-count {
+    font-size: 1.6rem;
+  }
+  
+  .admindashboard-pooja-filter {
+    padding: 20px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+  .admindashboard-content {
+    padding: 15px 10px;
+  }
+  
+  .admindashboard-pooja-filter {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .admindashboard-pooja-header {
+    padding: 15px;
+  }
+  
+  .admindashboard-participants-table th,
+  .admindashboard-participants-table td {
+    padding: 8px 5px;
+    font-size: 0.75rem;
+  }
+  
+  .participants-section-header {
+    padding: 15px;
+  }
+  
+  .admindashboard-footer-info {
+    padding: 20px;
+  }
+  
+  .admindashboard-note {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .note-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+  
+  .admindashboard-progress-bar {
+    width: 120px;
+  }
+  
+  .admindashboard-count {
+    font-size: 1.4rem;
+  }
+  
+  .summary-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+  }
+  
+  .participants-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .refresh-participants-btn,
+  .export-participants-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Print Styles Enhanced */
+@media print {
+  .admindashboard-header,
+  .admindashboard-actions,
+  .admindashboard-footer-info,
+  .participants-actions,
+  .admindashboard-pooja-filter {
+    display: none !important;
+  }
+  
+  .admindashboard-content {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .admindashboard-pooja-container {
+    break-inside: avoid;
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 2px solid #333;
+  }
+  
+  .participants-table-wrapper {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  .admindashboard-participants-table {
+    font-size: 0.7rem;
+  }
+  
+  .admindashboard-pooja-header {
+    background: #8B0000 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    color: white !important;
+  }
+  
+  .star-tag {
+    background: #e7f3ff !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  .amount-paid {
+    color: #28a745 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  .admindashboard-summary-stats {
+    display: none;
+  }
+}
+
+/* High Contrast Mode Support Enhanced */
+@media (prefers-contrast: high) {
+  .admindashboard-pooja-container,
+  .admindashboard-pooja-filter,
+  .admindashboard-summary-item,
+  .admindashboard-footer-info {
+    border: 3px solid #000000;
+  }
+  
+  .admindashboard-participants-table th,
+  .admindashboard-participants-table td {
+    border: 2px solid #000000;
+  }
+  
+  .star-tag,
+  .status-badge {
+    border: 2px solid #000000;
+  }
+}
+
+/* Reduced Motion Support Enhanced */
+@media (prefers-reduced-motion: reduce) {
+  .admindashboard-pooja-container,
+  .admindashboard-progress-fill,
+  .admindashboard-participant-row,
+  .admindashboard-summary-item,
+  .filter-summary,
+  .participants-section,
+  .quick-stat,
+  .note-item {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .admindashboard-pooja-container:hover,
+  .admindashboard-summary-item:hover,
+  .admindashboard-participant-row:hover,
+  .quick-stat:hover,
+  .note-item:hover {
+    transform: none !important;
+  }
+  
+  .admindashboard-full,
+  .temple-icon,
+  .admindashboard-spinner {
+    animation: none !important;
+  }
+  
+  .admindashboard-header::before,
+  .admindashboard-pooja-header::before,
+  .admindashboard-progress-fill::after {
+    animation: none !important;
+  }
+}
+
+/* Dark Mode Support Enhanced */
+@media (prefers-color-scheme: dark) {
+  .admindashboard-container {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .admindashboard-pooja-container,
+  .admindashboard-pooja-filter,
+  .admindashboard-summary-item,
+  .admindashboard-footer-info,
+  .recent-bookings-container,
+  .participants-summary .summary-stat {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #ffffff;
+  }
+  
+  .admindashboard-participants-table th {
+    background: #404040;
+    color: #ffffff;
+    border-color: #555555;
+  }
+  
+  .admindashboard-participants-table td {
+    border-color: #404040;
+    color: #cccccc;
+  }
+  
+  .filter-summary {
+    background: #404040;
+    border-color: #555555;
+  }
+  
+  .admindashboard-empty-slot {
+    background: #333333;
+  }
+  
+  .admindashboard-participant-row:nth-child(even) {
+    background: rgba(64, 64, 64, 0.3);
+  }
+  
+  .no-poojas-message {
+    background: #2d2d2d;
+    color: #ffffff;
+  }
+}
+
+/* Final Enhancements */
+.admindashboard-container * {
+  box-sizing: border-box;
+}
+
+.admindashboard-participants-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admindashboard-pooja-container:last-child {
+  margin-bottom: 0;
+}
+
+/* Smooth Scroll Behavior */
+.participants-table-wrapper,
+.admindashboard-participants-table {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Focus States */
+.participants-table-wrapper:focus-within {
+  outline: 3px solid #FFD700;
+  outline-offset: 3px;
+}
+
+/* Final Touch: Ensure all transitions are smooth */
+.admindashboard-container {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

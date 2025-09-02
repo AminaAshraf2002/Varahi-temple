@@ -1,0 +1,363 @@
+/* AdminLogin.css - Modern & Elegant Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.admin-login-page {
+  min-height: 100vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background particles */
+.admin-login-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.admin-login-container {
+  width: 100%;
+  max-width: 380px; /* Reduced size */
+  position: relative;
+  z-index: 2;
+}
+
+.admin-login-card {
+  background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+/* Elegant glassmorphism effect */
+.admin-login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.admin-header {
+    background: linear-gradient(135deg, #8B0000, #A52A2A, #DC143C);
+  color: #8B0000;
+  padding: 25px 25px; /* Reduced padding */
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+}
+
+.temple-logo {
+  font-size: 2rem; /* Reduced icon size */
+  margin-bottom: 12px; /* Reduced margin */
+  color: #8B0000;
+  animation: pulse 2s infinite;
+  text-shadow: 0 2px 4px rgba(139, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+}
+
+.admin-header h1 {
+  margin: 0 0 8px 0; /* Reduced margins */
+  font-size: 1.6rem; /* Reduced font size */
+  font-weight: 700;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.admin-header p {
+  margin: 0;
+  color: #FFD700;
+  font-size: 0.9rem; /* Reduced font size */
+  font-weight: 500;
+}
+
+.admin-login-form {
+  padding: 25px; /* Reduced padding */
+}
+
+.error-message {
+  background: linear-gradient(135deg, #fee, #fdd);
+  color: #c33;
+  padding: 12px 15px; /* Reduced padding */
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  border: 1px solid #fbb;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.form-group {
+  margin-bottom: 20px; /* Reduced margin */
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px; /* Reduced margin */
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.form-group label i {
+  color: #8B0000;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px; /* Reduced padding */
+  border: 2px solid #e0e0e0;
+  border-radius: 10px; /* More elegant radius */
+  font-size: 0.95rem; /* Reduced font size */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #8B0000;
+  box-shadow: 
+    0 0 0 3px rgba(139, 0, 0, 0.1),
+    0 4px 12px rgba(139, 0, 0, 0.15);
+  transform: translateY(-1px);
+  background: white;
+}
+
+.form-group input:disabled {
+  background: rgba(248, 249, 250, 0.7);
+  opacity: 0.7;
+}
+
+/* Floating label effect */
+.form-group input:focus + .floating-label,
+.form-group input:not(:placeholder-shown) + .floating-label {
+  top: -8px;
+  left: 12px;
+  font-size: 0.75rem;
+  color: #8B0000;
+  background: white;
+  padding: 0 4px;
+}
+
+.admin-login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #8B0000, #A52A2A, #DC143C);
+  color: white;
+  border: none;
+  padding: 14px 20px; /* Reduced padding */
+  border-radius: 12px; /* More elegant radius */
+  font-size: 1rem; /* Reduced font size */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+}
+
+.admin-login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.admin-login-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(139, 0, 0, 0.4);
+  background: linear-gradient(135deg, #A52A2A, #DC143C, #8B0000);
+}
+
+.admin-login-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.admin-login-btn:active {
+  transform: translateY(0);
+}
+
+.admin-login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-login-btn i {
+  transition: transform 0.3s ease;
+}
+
+.admin-login-btn:hover i {
+  transform: scale(1.1);
+}
+
+.admin-footer {
+  background: rgba(248, 249, 250, 0.8);
+  padding: 20px 25px; /* Reduced padding */
+  text-align: center;
+  border-top: 1px solid rgba(233, 236, 239, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.admin-footer p {
+  margin: 0 0 12px 0; /* Reduced margin */
+  color: #666;
+  font-size: 0.85rem; /* Reduced font size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.back-to-site-btn {
+  background: rgba(255, 255, 255, 0.8);
+  color: #666;
+  border: 1px solid rgba(221, 221, 221, 0.8);
+  padding: 8px 16px; /* Reduced padding */
+  border-radius: 8px; /* More elegant radius */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  font-size: 0.85rem; /* Reduced font size */
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.back-to-site-btn:hover {
+  background: #8B0000;
+  color: white;
+  border-color: #8B0000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .admin-login-container {
+    max-width: 340px; /* Even smaller on mobile */
+  }
+  
+  .admin-login-form {
+    padding: 20px;
+  }
+  
+  .admin-header {
+    padding: 20px;
+  }
+  
+  .temple-logo {
+    font-size: 1.8rem;
+  }
+  
+  .admin-header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .form-group input {
+    padding: 10px 12px;
+  }
+  
+  .admin-login-btn {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Loading spinner animation */
+.fa-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced focus indicators for accessibility */
+.form-group input:focus,
+.admin-login-btn:focus,
+.back-to-site-btn:focus {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
