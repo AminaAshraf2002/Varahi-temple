@@ -1,6 +1,7 @@
 // services/poojaService.js - API service functions for temple booking
 
-const API_BASE_URL = 'http://localhost:3001/api';
+// Updated to use production backend
+const API_BASE_URL = 'https://temple-server.onrender.com/api';
 
 // Helper function to handle API responses
 const handleResponse = async (response) => {
@@ -97,7 +98,7 @@ export const poojaService = {
     }
   },
 
-  // Get booking receipt by ID - UPDATED to handle your backend response
+  // Get booking receipt by ID
   getBookingReceipt: async (bookingId) => {
     try {
       const response = await apiCall(`/bookings/${bookingId}`);
@@ -169,10 +170,10 @@ export const poojaService = {
     }
   },
 
-  // NEW: Test API connection
+  // Test API connection - Updated for production
   testConnection: async () => {
     try {
-      const response = await fetch(`${API_BASE_URL.replace('/api', '')}/health`);
+      const response = await fetch('https://temple-server.onrender.com/health');
       const data = await response.json();
       return data;
     } catch (error) {
@@ -181,10 +182,10 @@ export const poojaService = {
     }
   },
 
-  // NEW: Get server info
+  // Get server info - Updated for production
   getServerInfo: async () => {
     try {
-      const response = await fetch(API_BASE_URL.replace('/api', ''));
+      const response = await fetch('https://temple-server.onrender.com/');
       const data = await response.json();
       return data;
     } catch (error) {
@@ -193,7 +194,7 @@ export const poojaService = {
     }
   },
 
-  // NEW: Validate booking data before sending
+  // Validate booking data before sending
   validateBookingData: (bookingData) => {
     const { devoteName, star, paymentMethod, poojaDate, poojaId } = bookingData;
     
@@ -236,7 +237,7 @@ export const poojaService = {
     };
   },
 
-  // NEW: Get booking statistics for user
+  // Get booking statistics
   getBookingStats: async () => {
     try {
       const allPoojas = await poojaService.getAllPoojas();
@@ -259,6 +260,41 @@ export const poojaService = {
     } catch (error) {
       console.error('Error calculating booking stats:', error);
       throw error;
+    }
+  },
+
+  // NEW: Environment-aware API base URL getter
+  getApiBaseUrl: () => {
+    // Can be used to switch between development and production
+    return API_BASE_URL;
+  },
+
+  // NEW: Check if server is responsive
+  checkServerHealth: async () => {
+    try {
+      const startTime = Date.now();
+      const response = await fetch('https://temple-server.onrender.com/health');
+      const endTime = Date.now();
+      
+      if (response.ok) {
+        const data = await response.json();
+        return {
+          status: 'healthy',
+          responseTime: endTime - startTime,
+          serverInfo: data
+        };
+      } else {
+        return {
+          status: 'unhealthy',
+          responseTime: endTime - startTime,
+          error: 'Server responded with error status'
+        };
+      }
+    } catch (error) {
+      return {
+        status: 'offline',
+        error: error.message
+      };
     }
   }
 };

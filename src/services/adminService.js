@@ -1,6 +1,7 @@
 // services/adminService.js - Enhanced Admin API service with improved error handling and data management
 
-const API_BASE_URL = 'http://localhost:3001/api';
+// Updated to use production backend
+const API_BASE_URL = 'https://temple-server.onrender.com/api';
 
 // Helper function to handle API responses with better error handling
 const handleResponse = async (response) => {
@@ -84,11 +85,11 @@ export const adminService = {
       });
       
       if (response.status === 'success') {
-        // Store admin session data
+        // Store admin session data (Note: In production, consider more secure storage)
         if (response.token) {
-          localStorage.setItem('adminToken', response.token);
-          localStorage.setItem('adminUser', JSON.stringify(response.admin));
-          localStorage.setItem('adminLoginTime', new Date().toISOString());
+          sessionStorage.setItem('adminToken', response.token);
+          sessionStorage.setItem('adminUser', JSON.stringify(response.admin));
+          sessionStorage.setItem('adminLoginTime', new Date().toISOString());
         }
         
         console.log('Admin login successful:', response.admin);
@@ -106,9 +107,17 @@ export const adminService = {
   logout: () => {
     try {
       // Clear all admin-related data
-      localStorage.removeItem('adminToken');
-      localStorage.removeItem('adminUser');
-      localStorage.removeItem('adminLoginTime');
+      sessionStorage.removeItem('adminToken');
+      sessionStorage.removeItem('adminUser');
+      sessionStorage.removeItem('adminLoginTime');
+      
+      // Clear cached data
+      const keys = Object.keys(sessionStorage);
+      keys.forEach(key => {
+        if (key.startsWith('adminCache_') || key.startsWith('adminBookingStats')) {
+          sessionStorage.removeItem(key);
+        }
+      });
       
       console.log('Admin logout successful');
       return Promise.resolve({ 
@@ -126,21 +135,21 @@ export const adminService = {
 
   // Enhanced login status check
   isLoggedIn: () => {
-    const token = localStorage.getItem('adminToken');
-    const user = localStorage.getItem('adminUser');
-    const loginTime = localStorage.getItem('adminLoginTime');
+    const token = sessionStorage.getItem('adminToken');
+    const user = sessionStorage.getItem('adminUser');
+    const loginTime = sessionStorage.getItem('adminLoginTime');
     
     if (!token || !user) {
       return false;
     }
 
-    // Check if login is expired (24 hours)
+    // Check if login is expired (8 hours for admin sessions)
     if (loginTime) {
       const loginDate = new Date(loginTime);
       const now = new Date();
       const diffInHours = (now - loginDate) / (1000 * 60 * 60);
       
-      if (diffInHours > 24) {
+      if (diffInHours > 8) {
         console.log('Admin session expired');
         adminService.logout();
         return false;
@@ -152,8 +161,8 @@ export const adminService = {
 
   // Get current admin user with session info
   getCurrentAdmin: () => {
-    const user = localStorage.getItem('adminUser');
-    const loginTime = localStorage.getItem('adminLoginTime');
+    const user = sessionStorage.getItem('adminUser');
+    const loginTime = sessionStorage.getItem('adminLoginTime');
     
     if (!user) return null;
     
@@ -277,16 +286,16 @@ export const adminService = {
     }
   },
 
-  // Enhanced booking statistics with caching
+  // Enhanced booking statistics with caching (using sessionStorage for admin)
   getBookingStats: async (useCache = true) => {
     const cacheKey = 'adminBookingStats';
     const cacheExpiry = 5 * 60 * 1000; // 5 minutes
     
     try {
       // Check cache first if enabled
-      if (useCache && typeof localStorage !== 'undefined') {
-        const cachedData = localStorage.getItem(cacheKey);
-        const cacheTime = localStorage.getItem(cacheKey + '_time');
+      if (useCache) {
+        const cachedData = sessionStorage.getItem(cacheKey);
+        const cacheTime = sessionStorage.getItem(cacheKey + '_time');
         
         if (cachedData && cacheTime) {
           const age = new Date() - new Date(cacheTime);
@@ -315,11 +324,9 @@ export const adminService = {
           ((dashboardData.overview.totalBookings / (dashboardData.overview.totalBookings + dashboardData.overview.pendingBookings)) * 100).toFixed(1) : 100
       };
 
-      // Cache the results
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem(cacheKey, JSON.stringify(stats));
-        localStorage.setItem(cacheKey + '_time', new Date().toISOString());
-      }
+      // Cache the results in sessionStorage
+      sessionStorage.setItem(cacheKey, JSON.stringify(stats));
+      sessionStorage.setItem(cacheKey + '_time', new Date().toISOString());
 
       return stats;
     } catch (error) {
@@ -519,7 +526,7 @@ export const adminService = {
     }
   },
 
-  // System health check
+  // System health check - Updated for production
   checkSystemHealth: async () => {
     try {
       console.log('Checking system health...');
@@ -533,7 +540,7 @@ export const adminService = {
 
       // Check API connectivity
       try {
-        const response = await fetch(`${API_BASE_URL.replace('/api', '')}/health`);
+        const response = await fetch('https://temple-server.onrender.com/health');
         const data = await response.json();
         healthChecks.api = response.ok;
         healthChecks.database = data.database === 'connected';
@@ -558,14 +565,12 @@ export const adminService = {
       console.log('Refreshing all admin data...');
       
       // Clear any cached data
-      if (typeof localStorage !== 'undefined') {
-        const keys = Object.keys(localStorage);
-        keys.forEach(key => {
-          if (key.startsWith('adminBookingStats') || key.startsWith('adminCache_')) {
-            localStorage.removeItem(key);
-          }
-        });
-      }
+      const keys = Object.keys(sessionStorage);
+      keys.forEach(key => {
+        if (key.startsWith('adminBookingStats') || key.startsWith('adminCache_')) {
+          sessionStorage.removeItem(key);
+        }
+      });
 
       // Fetch fresh dashboard data
       const dashboardData = await adminService.getDashboard();
@@ -581,6 +586,16 @@ export const adminService = {
       console.error('Error refreshing all data:', error);
       throw error;
     }
+  },
+
+  // Get environment info
+  getEnvironmentInfo: () => {
+    return {
+      apiBaseUrl: API_BASE_URL,
+      environment: 'production',
+      server: 'https://temple-server.onrender.com',
+      storageType: 'sessionStorage' // Using sessionStorage for admin sessions
+    };
   },
 
   // Analytics helper functions
