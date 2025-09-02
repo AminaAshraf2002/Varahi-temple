@@ -192,14 +192,14 @@ const Header = () => {
                 <i className="fas fa-calendar-check"></i>
                 Book Pooja Online
               </Link>
-              <Link 
+              {/* <Link 
                 to="/receipt"
                 className="mobile-cta-button secondary" 
                 onClick={closeMobileMenu}
               >
                 <i className="fas fa-receipt"></i>
                 View Receipt
-              </Link>
+              </Link> */}
             </div>
 
             {/* Temple Info in Mobile */}
